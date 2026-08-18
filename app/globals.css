@@ -1,0 +1,62 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --canvas-bg: #FAFAFA;
+    --paper-white: #FFFFFF;
+    --ink-primary: #0F172A;
+    --ink-secondary: #475569;
+    --blueprint-blue: #2563EB;
+    --medical-teal: #0D9488;
+    --border-hairline: rgba(226, 232, 240, 0.9);
+  }
+
+  body {
+    background-color: var(--canvas-bg);
+    color: var(--ink-primary);
+    font-feature-settings: "cv02", "cv03", "cv04", "cv11";
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+}
+
+/* Tactile Blueprint Grid Overlay */
+.blueprint-grid {
+  background-image: 
+    linear-gradient(to right, rgba(0, 0, 0, 0.03) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(0, 0, 0, 0.03) 1px, transparent 1px);
+  background-size: 32px 32px;
+}
+
+/* Recessed Inset Well */
+.recessed-well {
+  box-shadow: inset 0 1px 2px 0 rgba(0, 0, 0, 0.05), inset 0 2px 4px 0 rgba(0, 0, 0, 0.02);
+}
+
+/* Tactile Bevel Button Physics */
+.tactile-bevel {
+  box-shadow: inset 0 1px 0 0 rgba(255, 255, 255, 0.4), 0 1px 2px 0 rgba(0, 0, 0, 0.05);
+}
+
+.tactile-bevel-white {
+  box-shadow: inset 0 1px 0 0 rgba(255, 255, 255, 1), 0 1px 2px 0 rgba(0, 0, 0, 0.04);
+}
+
+/* Printable Medical Report styles */
+@media print {
+  body {
+    background-color: #ffffff !important;
+    color: #000000 !important;
+  }
+  .no-print {
+    display: none !important;
+  }
+  .print-only {
+    display: block !important;
+  }
+  .page-break {
+    page-break-after: always;
+  }
+}
