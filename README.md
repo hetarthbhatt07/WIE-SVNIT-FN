@@ -39,7 +39,7 @@ Through multi-stage prescription OCR, canonical RxNorm normalization, determinis
 - **Role-Based Workspaces**:
   - **Patient Portal**: Dashboard, active medications, health profile, medical condition tracker (CRUD), allergy registry, and prescription archives.
   - **Doctor Clinical Workbench**: Triage dashboard, patient directory, **Patient 360 Record** with 1-click Clinical Review, multi-drug workbench, and clinical dossier archives.
-  - **Admin & System Diagnostics**: Live telemetry checks for Database, Neural OCR Engine, RxNorm Service, and AI Reasoning Layer.
+  - **Admin Workspace**: Live telemetry checks for Database, Neural OCR Engine, RxNorm Service, and AI Reasoning Layer.
 - **Regulatory Audit Logging & Security**:
   - Immutable HIPAA/CDSCO-compliant decision logs with guideline citations (FDA, CHEST, CPIC).
   - DigiLocker / ABHA National Health ID integration simulation.
@@ -57,82 +57,7 @@ Through multi-stage prescription OCR, canonical RxNorm normalization, determinis
 
 ---
 
-## 4. System Architecture & End-to-End Workflow
-
-```
-Patient / Doctor
-       │
-       ▼
-Authentication (Credentials / DigiLocker ABHA Gateway)
-       │
-       ▼
-Role-Based Dashboard (Patient Portal vs Doctor Clinical Workbench)
-       │
-       ▼
-Prescription Ingestion (Image/PDF Upload, Manual Entry, Package Scanner)
-       │
-       ▼
-5-Stage Image Pre-Processing (Noise Removal, Skew Correction, Contrast Enhancement)
-       │
-       ▼
-Neural OCR Processing (Tesseract.js Engine + Medical Text Cleaning)
-       │
-       ▼
-Medicine Name Extraction (NER / Tokenization / Pattern Matching)
-       │
-       ▼
-RxNorm Normalization (Brand-to-Generic Mapping, RxCUI Codes, Dosage Forms)
-       │
-       ▼
-Patient Context Integration (ICD-10 Diagnoses, Weight, Age, Allergies)
-       │
-       ▼
-Clinical Safety Engines:
- ├── Drug-Drug Interaction Matrix (Severity: Low, Moderate, Major, Severe)
- ├── Drug-Disease Contraindications (ICD-10 Condition Matching)
- ├── Drug Warnings & Black-Box Alerts
- └── Drug Avoidance Engine (Unsafe Drug Detection & Safer Alternatives)
-       │
-       ▼
-AI Reasoning Core & Decision Layer (Anti-Hallucination Safety Gatekeeper)
-       │
-       ▼
-Dual Recipient Output Synthesis:
- ├── Patient Report (Plain English, Timetable, Food Instructions, Safety Warnings)
- └── Doctor Report (Pharmacological Mechanisms, ICD-10 Codes, Monitoring Parameters, Citations)
-       │
-       ▼
-Immutable Interaction History & Regulatory Audit Logging
-```
-
----
-
-## 5. Database Schema Mapping (CSV + Extensions)
-
-### Baseline Provided Schema (from `data-1786955744718.csv`):
-1. `drugs`: `drug_id`, `rxcui`, `brand_name`, `generic_name`, `ingredient_name`, `dosage_form`, `strength`, `route`, `atc_code`, `manufacturer`, `source`, `updated_at`
-2. `drug_interactions`: `interaction_id`, `drug1_id`, `drug2_id`, `severity`, `interaction_type`, `description`, `clinical_effect`, `recommendation`, `evidence_source`, `reference_url`, `updated_at`
-3. `contraindications`: `contraindication_id`, `drug_id`, `medical_condition_id`, `severity`, `description`, `source`, `reference_url`, `created_at`
-4. `medical_conditions`: `medical_condition_id`, `icd10_code`, `condition_name`, `category`, `description`, `created_at`, `updated_at`
-5. `patient_conditions`: `patient_condition_id`, `patient_id`, `medical_condition_id`, `severity`, `status`, `diagnosed_on`, `notes`, `created_at`
-6. `patients`: `patient_id`, `full_name`, `age`, `gender`, `date_of_birth`, `weight`, `height`, `blood_group`, `created_at`, `email`, `phone_number`, `password_hash`
-7. `prescriptions`: `prescription_id`, `patient_id`, `doctor_name`, `hospital_name`, `uploaded_file`, `prescription_date`, `ocr_text`, `created_at`
-8. `prescription_drugs`: `prescription_drug_id`, `prescription_id`, `drug_id`, `original_text`, `dosage`, `frequency`, `duration`, `instructions`
-9. `drug_warnings`: `warning_id`, `drug_id`, `warning_type`, `warning_text`, `source`
-10. `drug_classes`: `class_id`, `drug_id`, `class_name`, `class_type`
-
-### Application Extension Tables:
-11. `users`: Role-based authentication (`patient`, `doctor`, `admin`)
-12. `doctor_profiles`: Physician credentials, licensing numbers, affiliations
-13. `patient_allergies`: Allergy cross-screening records
-14. `analysis_sessions`: Stored clinical safety evaluations with risk scores
-15. `patient_reports`: Dual patient/doctor synthesized summaries
-16. `audit_logs`: Immutable decision and evidence audit trail
-17. `notifications`: Real-time severity alert notifications
-
----
-
-## 6. Setup & Installation Instructions
+## 4. Setup & Installation Instructions
 
 ### Prerequisites
 - Node.js >= 18.x
@@ -154,11 +79,11 @@ npm run dev
 | :--- | :--- | :--- | :--- |
 | **Patient** | `patient@medsafe.ai` | `demo123` | Active prescriptions, Peptic Ulcer + Warfarin history, OCR analysis, Patient Reports |
 | **Doctor** | `doctor@medsafe.ai` | `demo123` | Patient 360 Records, Clinical Regimen Builder, Pharmacological Dossiers |
-| **Admin** | `admin@medsafe.ai` | `demo123` | System Health, Engine Diagnostics, Database Telemetry |
+| **Admin** | `admin@medsafe.ai` | `demo123` | System Diagnostics, Telemetry, Database & OCR Engine Status |
 
 ---
 
-## 7. Current Implementation Status
+## 5. Current Implementation Status
 
 | Milestone / Component | Status | Description |
 | :--- | :--- | :--- |
@@ -175,7 +100,42 @@ npm run dev
 
 ---
 
-## 8. Complete Application Route Directory
+## 6. Complete Application Route Directory
+
+### Master Route Overview (All 31 Application Routes)
+| Route Path | Category / Workspace | Page Name | Primary Functionality |
+| :--- | :--- | :--- | :--- |
+| `/` | Public | **Landing Page** | 6-step architecture visualizer, interactive DDI test sandbox, feature matrix |
+| `/login` | Public / Auth | **Sign In** | Tabbed patient/doctor login, demo auto-fillers, DigiLocker ABHA modal |
+| `/signup` | Public / Auth | **Create Account** | Multi-step registration, patient calibration / doctor verification |
+| `/forgot-password` | Public / Auth | **Password Reset** | Token-based security recovery flow |
+| `/patient/dashboard` | Patient | **Patient Dashboard** | Clinical metrics, active meds schedule, critical alert banners, rxs |
+| `/patient/profile` | Patient | **Health Profile** | Personal demographics, physiological metrics (BMI auto-calc, blood group) |
+| `/patient/medical-history` | Patient | **Medical Conditions** | Full CRUD condition tracker with WHO ICD-10 tagging and search/filter |
+| `/patient/allergies` | Patient | **Allergy Registry** | Severity-coded hypersensitivity tracking (`Low`, `Moderate`, `Severe`, `Anaphylactic`) |
+| `/patient/medications` | Patient | **My Medications** | RxNorm standardized compound inventory with dosage and safety check |
+| `/patient/prescriptions` | Patient | **Prescription Archives** | Ingested prescription documents with raw & cleaned OCR text viewer |
+| `/patient/analysis` | Patient | **Medication Safety Hub** | Multi-mode ingestion: 5-Stage OCR Upload, Manual Search, Package Scanner |
+| `/patient/analysis/results` | Patient | **Safety Matrix Results** | Combinatorial pairwise DDI matrix, ICD-10 checks, Drug Avoidance |
+| `/patient/reports` | Patient | **Safety Dossier Viewer** | Dual-recipient report (Patient Plain English vs Doctor Dossier) with Print / PDF |
+| `/patient/history` | Patient | **Interaction History** | Longitudinal audit trail of previous analysis sessions with re-run & compare |
+| `/patient/settings` | Patient | **Account & Security** | Password change, SMS/email notification toggles, active sessions |
+| `/doctor/dashboard` | Doctor | **Clinician Workbench** | Triage metrics, assigned patient roster, critical contraindication flags |
+| `/doctor/patients` | Doctor | **Patient Directory** | Searchable patient registry with condition badges and triage actions |
+| `/doctor/patients/[id]` | Doctor | **Patient 360 Record** | Longitudinal patient record (diagnoses, allergies, meds) + 1-click Clinical Review |
+| `/doctor/analysis` | Doctor | **Multi-Drug Workbench** | Advanced regimen simulator, custom compound combinations & DDI matrix |
+| `/doctor/reports` | Doctor | **Clinical Dossiers** | Archive of physician-grade pharmacotherapy reports with evidence links |
+| `/doctor/alerts` | Doctor | **Critical Alerts Inbox** | High-priority clinical feed for dangerous drug interactions |
+| `/doctor/audit-logs` | Doctor | **Regulatory Audit Logs** | Immutable HIPAA/CDSCO decision audit logs with evidence guidelines |
+| `/doctor/settings` | Doctor | **Physician Credentials** | Medical registration/licensure numbers, specialty, and hospital info |
+| `/admin/system-health` | Admin | **System Diagnostics** | Real-time telemetry checks for Database, Neural OCR, RxNorm & AI Gateway |
+| `/admin/patients` | Admin | **Admin Patient Registry** | Registered patient directory with condition badges and demographic inspection |
+| `/admin/audit-logs` | Admin | **Regulatory Audit Ledger** | System-wide security traces, user activity logs, and evidence citations |
+| `/admin/clinical-engine` | Admin | **Clinical Knowledge Catalog** | Catalog of pharmaceutical compounds, pairwise DDIs, and ICD-10 rules |
+| `/admin/reports` | Admin | **System Reports Archive** | Central archive of synthesized patient summaries and physician dossiers |
+| `/admin/settings` | Admin | **System Preferences** | OCR confidence thresholds, RxNorm sync frequency, AI safety strictness |
+
+---
 
 ### A. Public & Authentication Routes
 | Route | Page Name | Key Features & Functionality |
@@ -227,6 +187,81 @@ npm run dev
 | `/admin/clinical-engine` | **Clinical Knowledge Catalog** | Catalog of indexed pharmaceutical compounds, pairwise DDI matrices, and ICD-10 disease contraindications |
 | `/admin/reports` | **System Reports Archive** | Central archive of synthesized patient summaries and physician pharmacological dossiers |
 | `/admin/settings` | **System Preferences** | OCR confidence thresholds, RxNorm sync frequency, AI Safety Gatekeeper strictness, and audit retention |
+
+---
+
+## 7. System Architecture & End-to-End Workflow
+
+```
+Patient / Doctor
+       │
+       ▼
+Authentication (Credentials / DigiLocker ABHA Gateway)
+       │
+       ▼
+Role-Based Dashboard (Patient Portal vs Doctor Clinical Workbench)
+       │
+       ▼
+Prescription Ingestion (Image/PDF Upload, Manual Entry, Package Scanner)
+       │
+       ▼
+5-Stage Image Pre-Processing (Noise Removal, Skew Correction, Contrast Enhancement)
+       │
+       ▼
+Neural OCR Processing (Tesseract.js Engine + Medical Text Cleaning)
+       │
+       ▼
+Medicine Name Extraction (NER / Tokenization / Pattern Matching)
+       │
+       ▼
+RxNorm Normalization (Brand-to-Generic Mapping, RxCUI Codes, Dosage Forms)
+       │
+       ▼
+Patient Context Integration (ICD-10 Diagnoses, Weight, Age, Allergies)
+       │
+       ▼
+Clinical Safety Engines:
+ ├── Drug-Drug Interaction Matrix (Severity: Low, Moderate, Major, Severe)
+ ├── Drug-Disease Contraindications (ICD-10 Condition Matching)
+ ├── Drug Warnings & Black-Box Alerts
+ └── Drug Avoidance Engine (Unsafe Drug Detection & Safer Alternatives)
+       │
+       ▼
+AI Reasoning Core & Decision Layer (Anti-Hallucination Safety Gatekeeper)
+       │
+       ▼
+Dual Recipient Output Synthesis:
+ ├── Patient Report (Plain English, Timetable, Food Instructions, Safety Warnings)
+ └── Doctor Report (Pharmacological Mechanisms, ICD-10 Codes, Monitoring Parameters, Citations)
+       │
+       ▼
+Immutable Interaction History & Regulatory Audit Logging
+```
+
+---
+
+## 8. Database Schema Mapping (CSV + Extensions)
+
+### Baseline Provided Schema (from `data-1786955744718.csv`):
+1. `drugs`: `drug_id`, `rxcui`, `brand_name`, `generic_name`, `ingredient_name`, `dosage_form`, `strength`, `route`, `atc_code`, `manufacturer`, `source`, `updated_at`
+2. `drug_interactions`: `interaction_id`, `drug1_id`, `drug2_id`, `severity`, `interaction_type`, `description`, `clinical_effect`, `recommendation`, `evidence_source`, `reference_url`, `updated_at`
+3. `contraindications`: `contraindication_id`, `drug_id`, `medical_condition_id`, `severity`, `description`, `source`, `reference_url`, `created_at`
+4. `medical_conditions`: `medical_condition_id`, `icd10_code`, `condition_name`, `category`, `description`, `created_at`, `updated_at`
+5. `patient_conditions`: `patient_condition_id`, `patient_id`, `medical_condition_id`, `severity`, `status`, `diagnosed_on`, `notes`, `created_at`
+6. `patients`: `patient_id`, `full_name`, `age`, `gender`, `date_of_birth`, `weight`, `height`, `blood_group`, `created_at`, `email`, `phone_number`, `password_hash`
+7. `prescriptions`: `prescription_id`, `patient_id`, `doctor_name`, `hospital_name`, `uploaded_file`, `prescription_date`, `ocr_text`, `created_at`
+8. `prescription_drugs`: `prescription_drug_id`, `prescription_id`, `drug_id`, `original_text`, `dosage`, `frequency`, `duration`, `instructions`
+9. `drug_warnings`: `warning_id`, `drug_id`, `warning_type`, `warning_text`, `source`
+10. `drug_classes`: `class_id`, `drug_id`, `class_name`, `class_type`
+
+### Application Extension Tables:
+11. `users`: Role-based authentication (`patient`, `doctor`, `admin`)
+12. `doctor_profiles`: Physician credentials, licensing numbers, affiliations
+13. `patient_allergies`: Allergy cross-screening records
+14. `analysis_sessions`: Stored clinical safety evaluations with risk scores
+15. `patient_reports`: Dual patient/doctor synthesized summaries
+16. `audit_logs`: Immutable decision and evidence audit trail
+17. `notifications`: Real-time severity alert notifications
 
 ---
 
