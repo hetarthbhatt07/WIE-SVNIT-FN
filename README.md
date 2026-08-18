@@ -102,41 +102,6 @@ npm run dev
 
 ## 6. Complete Application Route Directory
 
-### Master Route Overview (All 31 Application Routes)
-| Route Path | Category / Workspace | Page Name | Primary Functionality |
-| :--- | :--- | :--- | :--- |
-| `/` | Public | **Landing Page** | 6-step architecture visualizer, interactive DDI test sandbox, feature matrix |
-| `/login` | Public / Auth | **Sign In** | Tabbed patient/doctor login, demo auto-fillers, DigiLocker ABHA modal |
-| `/signup` | Public / Auth | **Create Account** | Multi-step registration, patient calibration / doctor verification |
-| `/forgot-password` | Public / Auth | **Password Reset** | Token-based security recovery flow |
-| `/patient/dashboard` | Patient | **Patient Dashboard** | Clinical metrics, active meds schedule, critical alert banners, rxs |
-| `/patient/profile` | Patient | **Health Profile** | Personal demographics, physiological metrics (BMI auto-calc, blood group) |
-| `/patient/medical-history` | Patient | **Medical Conditions** | Full CRUD condition tracker with WHO ICD-10 tagging and search/filter |
-| `/patient/allergies` | Patient | **Allergy Registry** | Severity-coded hypersensitivity tracking (`Low`, `Moderate`, `Severe`, `Anaphylactic`) |
-| `/patient/medications` | Patient | **My Medications** | RxNorm standardized compound inventory with dosage and safety check |
-| `/patient/prescriptions` | Patient | **Prescription Archives** | Ingested prescription documents with raw & cleaned OCR text viewer |
-| `/patient/analysis` | Patient | **Medication Safety Hub** | Multi-mode ingestion: 5-Stage OCR Upload, Manual Search, Package Scanner |
-| `/patient/analysis/results` | Patient | **Safety Matrix Results** | Combinatorial pairwise DDI matrix, ICD-10 checks, Drug Avoidance |
-| `/patient/reports` | Patient | **Safety Dossier Viewer** | Dual-recipient report (Patient Plain English vs Doctor Dossier) with Print / PDF |
-| `/patient/history` | Patient | **Interaction History** | Longitudinal audit trail of previous analysis sessions with re-run & compare |
-| `/patient/settings` | Patient | **Account & Security** | Password change, SMS/email notification toggles, active sessions |
-| `/doctor/dashboard` | Doctor | **Clinician Workbench** | Triage metrics, assigned patient roster, critical contraindication flags |
-| `/doctor/patients` | Doctor | **Patient Directory** | Searchable patient registry with condition badges and triage actions |
-| `/doctor/patients/[id]` | Doctor | **Patient 360 Record** | Longitudinal patient record (diagnoses, allergies, meds) + 1-click Clinical Review |
-| `/doctor/analysis` | Doctor | **Multi-Drug Workbench** | Advanced regimen simulator, custom compound combinations & DDI matrix |
-| `/doctor/reports` | Doctor | **Clinical Dossiers** | Archive of physician-grade pharmacotherapy reports with evidence links |
-| `/doctor/alerts` | Doctor | **Critical Alerts Inbox** | High-priority clinical feed for dangerous drug interactions |
-| `/doctor/audit-logs` | Doctor | **Regulatory Audit Logs** | Immutable HIPAA/CDSCO decision audit logs with evidence guidelines |
-| `/doctor/settings` | Doctor | **Physician Credentials** | Medical registration/licensure numbers, specialty, and hospital info |
-| `/admin/system-health` | Admin | **System Diagnostics** | Real-time telemetry checks for Database, Neural OCR, RxNorm & AI Gateway |
-| `/admin/patients` | Admin | **Admin Patient Registry** | Registered patient directory with condition badges and demographic inspection |
-| `/admin/audit-logs` | Admin | **Regulatory Audit Ledger** | System-wide security traces, user activity logs, and evidence citations |
-| `/admin/clinical-engine` | Admin | **Clinical Knowledge Catalog** | Catalog of pharmaceutical compounds, pairwise DDIs, and ICD-10 rules |
-| `/admin/reports` | Admin | **System Reports Archive** | Central archive of synthesized patient summaries and physician dossiers |
-| `/admin/settings` | Admin | **System Preferences** | OCR confidence thresholds, RxNorm sync frequency, AI safety strictness |
-
----
-
 ### A. Public & Authentication Routes
 | Route | Page Name | Key Features & Functionality |
 | :--- | :--- | :--- |
