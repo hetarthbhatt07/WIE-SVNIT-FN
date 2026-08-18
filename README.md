@@ -10,7 +10,54 @@ The application is built strictly according to:
 
 ---
 
-## 1. System Architecture & End-to-End Workflow
+## 1. Project Objective
+
+The primary objective of **MedSafe AI** is to prevent adverse drug events (ADEs), dangerous drug-drug interactions (DDIs), and disease-specific contraindications by providing an intelligent, automated clinical decision-support system for both patients and healthcare practitioners. 
+
+Through multi-stage prescription OCR, canonical RxNorm normalization, deterministic clinical matrix evaluation, and anti-hallucination safety gatekeeper reasoning, the platform bridges the communication gap between complex pharmacological data and actionable patient care.
+
+---
+
+## 2. Key Features
+
+- **Multi-Source Ingestion Pipeline**:
+  - Drag-and-drop Prescription OCR (JPG, PNG, PDF) with 5-stage image pre-processing (noise removal, deskewing, Otsu contrast enhancement).
+  - Manual Drug Regimen Search with live RxNorm concept autocomplete.
+  - Optical Medicine Package Scanner.
+- **RxNorm Canonical Normalization**:
+  - Standardizes brand names (e.g. *Coumadin*, *Advil*, *Prinivil*, *Glucophage*) into generic compounds, standard dosage forms, and RxCUI codes.
+- **Clinical Interaction & Avoidance Engine**:
+  - Combinatorial pairwise matrix evaluation across all active drugs in a regimen.
+  - Severity classification: `LOW / NONE`, `MODERATE`, `MAJOR / SEVERE`.
+  - Drug Avoidance Engine: Pinpoints hazardous medications and suggests clinically approved safer therapeutic alternatives (e.g. Acetaminophen instead of Ibuprofen for patients on Warfarin or with Peptic Ulcer Disease).
+- **Disease Contraindications & Allergy Cross-Screening**:
+  - Cross-checks active medications against diagnosed **WHO ICD-10** medical conditions and hypersensitivity registries.
+- **Dual Recipient Reports**:
+  - **Patient Friendly Report**: Plain English explanation, personalized medication schedule, dietary guidelines, and safety alerts.
+  - **Doctor Clinical Dossier**: Detailed pharmacological mechanisms, ICD-10 contraindications, laboratory monitoring parameters, and PubMed/FDA citations.
+  - Native 1-click **Print / PDF** generation.
+- **Role-Based Workspaces**:
+  - **Patient Portal**: Dashboard, active medications, health profile, medical condition tracker (CRUD), allergy registry, and prescription archives.
+  - **Doctor Clinical Workbench**: Triage dashboard, patient directory, **Patient 360 Record** with 1-click Clinical Review, multi-drug workbench, and clinical dossier archives.
+  - **Admin & System Diagnostics**: Live telemetry checks for Database, Neural OCR Engine, RxNorm Service, and AI Reasoning Layer.
+- **Regulatory Audit Logging & Security**:
+  - Immutable HIPAA/CDSCO-compliant decision logs with guideline citations (FDA, CHEST, CPIC).
+  - DigiLocker / ABHA National Health ID integration simulation.
+
+---
+
+## 3. Technology Stack
+
+- **Framework**: Next.js 14+ (App Router, TypeScript, React 18)
+- **Styling**: Tailwind CSS configured with the **Paperweight Tactile UI System** (`#FAFAFA` paper canvas, `#2563EB` blueprint blue, tactile bevels `shadow-[inset_0_1px_0_0_rgba(255,255,255,0.4)]`, active mechanical click physics `active:scale-[0.98]`).
+- **Icons**: Lucide React
+- **OCR Engine**: Tesseract.js Neural Optical Character Recognition with Bilateral Pre-Processing Filters.
+- **Data Store**: Reactive Local State Store with seed datasets directly derived from `data-1786955744718.csv` with full localStorage persistence.
+- **Reporting**: Native browser print and PDF export with dedicated print media stylesheets.
+
+---
+
+## 4. System Architecture & End-to-End Workflow
 
 ```
 Patient / Doctor
@@ -60,18 +107,7 @@ Immutable Interaction History & Regulatory Audit Logging
 
 ---
 
-## 2. Technology Stack
-
-- **Framework**: Next.js 14+ (App Router, TypeScript, React 18)
-- **Styling**: Tailwind CSS configured with the **Paperweight Tactile UI System** (`#FAFAFA` paper canvas, `#2563EB` blueprint blue, tactile bevels `shadow-[inset_0_1px_0_0_rgba(255,255,255,0.4)]`, active mechanical click physics `active:scale-[0.98]`).
-- **Icons**: Lucide React
-- **OCR Engine**: Tesseract.js Neural Optical Character Recognition with Bilateral Pre-Processing Filters.
-- **Data Store**: Reactive Local State Store with seed datasets directly derived from `data-1786955744718.csv` with full localStorage persistence.
-- **Reporting**: Native browser print and PDF export with dedicated print media stylesheets.
-
----
-
-## 3. Database Schema Mapping (CSV + Extensions)
+## 5. Database Schema Mapping (CSV + Extensions)
 
 ### Baseline Provided Schema (from `data-1786955744718.csv`):
 1. `drugs`: `drug_id`, `rxcui`, `brand_name`, `generic_name`, `ingredient_name`, `dosage_form`, `strength`, `route`, `atc_code`, `manufacturer`, `source`, `updated_at`
@@ -96,13 +132,13 @@ Immutable Interaction History & Regulatory Audit Logging
 
 ---
 
-## 4. Getting Started Locally
+## 6. Setup & Installation Instructions
 
 ### Prerequisites
 - Node.js >= 18.x
 - npm >= 8.x
 
-### Installation & Run Commands
+### Run Commands
 ```bash
 # 1. Clone repository & install dependencies
 npm install
@@ -114,14 +150,32 @@ npm run dev
 ```
 
 ### Pre-Configured Demo Accounts:
-| Role | Email | Password | Features |
+| Role | Email | Password | Available Features |
 | :--- | :--- | :--- | :--- |
 | **Patient** | `patient@medsafe.ai` | `demo123` | Active prescriptions, Peptic Ulcer + Warfarin history, OCR analysis, Patient Reports |
 | **Doctor** | `doctor@medsafe.ai` | `demo123` | Patient 360 Records, Clinical Regimen Builder, Pharmacological Dossiers |
+| **Admin** | `admin@medsafe.ai` | `demo123` | System Health, Engine Diagnostics, Database Telemetry |
 
 ---
 
-## 5. Complete Application Route Directory
+## 7. Current Implementation Status
+
+| Milestone / Component | Status | Description |
+| :--- | :--- | :--- |
+| **Tech Stack & Tactile UI Design System** | ✅ Completed | Next.js 14, Tailwind, `#FAFAFA` Canvas, Bevel highlights, Pressed physics |
+| **Clinical Knowledge Layer** | ✅ Completed | 25+ standard drugs, 12+ interaction rules, ICD-10 contraindications |
+| **RxNorm Normalization Service** | ✅ Completed | Concept extraction, brand-to-generic mapping, autocomplete |
+| **Multi-Stage OCR Pipeline** | ✅ Completed | Pre-processing (Denoising, Deskewing, Otsu) + Tesseract.js neural OCR |
+| **Interaction & Avoidance Engine** | ✅ Completed | Pairwise matrix, ICD-10 checks, alternative safe recommendations |
+| **AI Reasoning & Decision Layer** | ✅ Completed | Safety Gatekeeper, context builder, dual recipient report synthesizer |
+| **Patient Portal (11 Pages)** | ✅ Completed | Dashboard, Profile, Conditions, Allergies, Meds, Prescriptions, Analysis, Results, Reports, History, Settings |
+| **Doctor Portal (8 Pages)** | ✅ Completed | Dashboard, Directory, Patient 360, Regimen Workbench, Reports, Alerts, Audit Logs, Settings |
+| **Admin Workspace (6 Pages)** | ✅ Completed | System Telemetry, Patient Registry, Audit Logs, Clinical Knowledge Base, Reports Archive, Settings |
+| **Production Build Verification** | ✅ Completed | Verified build with **0 errors across all 31 routes** |
+
+---
+
+## 8. Complete Application Route Directory
 
 ### A. Public & Authentication Routes
 | Route | Page Name | Key Features & Functionality |
@@ -164,14 +218,19 @@ npm run dev
 
 ---
 
-### D. System Diagnostics Routes (`/admin/*`)
+### D. Admin Workspace Routes (`/admin/*`)
 | Route | Page Name | Key Features & Functionality |
 | :--- | :--- | :--- |
-| `/admin/system-health` | **System Health & Diagnostics** | Live telemetry checks for Database, Neural OCR Engine, RxNorm Service, and AI Reasoning Layer |
+| `/admin/system-health` | **System Diagnostics & Telemetry** | Live telemetry checks for Database, Neural OCR Engine, RxNorm Service, and AI Reasoning Layer |
+| `/admin/patients` | **Admin Patient Registry** | Complete registered patient directory with condition badges, blood group indicators, and patient inspection |
+| `/admin/audit-logs` | **Regulatory Audit Ledger** | System-wide security traces, user activity logs, and evidence baseline citations (FDA, CHEST, CPIC) |
+| `/admin/clinical-engine` | **Clinical Knowledge Catalog** | Catalog of indexed pharmaceutical compounds, pairwise DDI matrices, and ICD-10 disease contraindications |
+| `/admin/reports` | **System Reports Archive** | Central archive of synthesized patient summaries and physician pharmacological dossiers |
+| `/admin/settings` | **System Preferences** | OCR confidence thresholds, RxNorm sync frequency, AI Safety Gatekeeper strictness, and audit retention |
 
 ---
 
-## 6. Medical & Regulatory Disclaimer
+## 9. Medical & Regulatory Disclaimer
 
 > [!IMPORTANT]
 > **Clinical Decision Support Notice**:
