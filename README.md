@@ -121,79 +121,58 @@ npm run dev
 
 ---
 
-## 5. Medical & Regulatory Disclaimer
+## 5. Complete Application Route Directory
+
+### A. Public & Authentication Routes
+| Route | Page Name | Key Features & Functionality |
+| :--- | :--- | :--- |
+| `/` | **Landing Page** | 6-step architecture visualizer, interactive DDI test sandbox, feature matrix, role gateways |
+| `/login` | **Sign In** | Tabbed patient/doctor login, 1-click demo credentials auto-filler, DigiLocker ABHA modal |
+| `/signup` | **Create Account** | Multi-step registration, baseline health calibration (patient) / medical council verification (doctor) |
+| `/forgot-password` | **Password Reset** | Token-based security recovery flow |
+
+---
+
+### B. Patient Workspace Routes (`/patient/*`)
+| Route | Page Name | Key Features & Functionality |
+| :--- | :--- | :--- |
+| `/patient/dashboard` | **Patient Dashboard** | Real-time clinical metrics, active medications schedule, critical alert banners, prescription history |
+| `/patient/profile` | **Health Profile** | Personal demographics, physiological metrics (BMI auto-calc, weight, height, blood group) |
+| `/patient/medical-history` | **Medical Conditions** | Full CRUD condition tracker with WHO ICD-10 tagging and search/filter |
+| `/patient/allergies` | **Allergy Registry** | Severity-coded hypersensitivity tracking (`Low`, `Moderate`, `Severe`, `Anaphylactic`) |
+| `/patient/medications` | **My Medications** | RxNorm standardized compound inventory with dosage, frequency, and 1-click safety check |
+| `/patient/prescriptions` | **Prescription Archives** | Ingested prescription documents with raw OCR and cleaned text transcript viewer |
+| `/patient/analysis` | **Medication Safety Hub** | Multi-mode ingestion: 5-Stage OCR Upload, Manual RxNorm Search Autocomplete, Package Scanner |
+| `/patient/analysis/results` | **Safety Matrix Results** | Combinatorial pairwise DDI matrix, ICD-10 contraindications, Drug Avoidance recommendations |
+| `/patient/reports` | **Safety Dossier Viewer** | Dual-recipient report (Patient Plain English vs Clinician Dossier) with 1-click **Print / PDF** |
+| `/patient/history` | **Interaction History** | Longitudinal audit trail of previous analysis sessions with re-run & comparison |
+| `/patient/settings` | **Account & Security** | Password change, critical SMS/email notification toggles, active sessions |
+
+---
+
+### C. Doctor / Clinician Workspace Routes (`/doctor/*`)
+| Route | Page Name | Key Features & Functionality |
+| :--- | :--- | :--- |
+| `/doctor/dashboard` | **Clinician Workbench** | Triage metrics, assigned patient roster, critical contraindication flags, pending reviews |
+| `/doctor/patients` | **Patient Directory** | Searchable patient registry with condition badges, blood groups, and quick triage actions |
+| `/doctor/patients/[id]` | **Patient 360 Record** | Complete longitudinal patient record (diagnoses, allergies, meds, rxs) with 1-click Clinical Review |
+| `/doctor/analysis` | **Multi-Drug Workbench** | Advanced regimen simulator, custom compound combinations, and instant DDI matrix calculation |
+| `/doctor/reports` | **Clinical Dossiers** | Archive of physician-grade pharmacotherapy reports with evidence citations |
+| `/doctor/alerts` | **Critical Alerts Inbox** | High-priority clinical feed for dangerous drug interactions across all rostered patients |
+| `/doctor/audit-logs` | **Regulatory Audit Logs** | Immutable HIPAA/CDSCO decision audit logs with evidence guidelines (FDA, CHEST, CPIC) |
+| `/doctor/settings` | **Physician Credentials** | Medical registration/licensure numbers, primary specialty, and hospital affiliations |
+
+---
+
+### D. System Diagnostics Routes (`/admin/*`)
+| Route | Page Name | Key Features & Functionality |
+| :--- | :--- | :--- |
+| `/admin/system-health` | **System Health & Diagnostics** | Live telemetry checks for Database, Neural OCR Engine, RxNorm Service, and AI Reasoning Layer |
+
+---
+
+## 6. Medical & Regulatory Disclaimer
 
 > [!IMPORTANT]
 > **Clinical Decision Support Notice**:
 > MedSafe AI is an automated medication safety and clinical decision-support platform designed to assist healthcare professionals and empower patients. It is not a substitute for clinical judgment, medical diagnosis, or personalized medical advice from a qualified healthcare provider. Do not discontinue or alter medications without consulting your prescribing physician or licensed pharmacist.
-
-
-Patient: patient@medsafe.ai / demo123
-Doctor: doctor@medsafe.ai / demo123
-
-Pathway	
-Route	
-Key Features
-
-
-Landing Page	
-/
-Interactive architecture stepper, feature matrix, live demo sandbox, role gateways
-
-Authentication	
-/login
-, 
-/signup
-Tabbed patient/doctor login, 1-click demo auto-fillers, DigiLocker ABHA modal
-
-Patient Portal	
-/patient/dashboard
-Active medications, critical alert ribbons, prescription history, metrics
-
-Health Profile	
-/patient/profile
-Demographic and physiological parameters (BMI, weight, height, blood group)
-
-Medical History	
-/patient/medical-history
-Full CRUD for diagnosed conditions with ICD-10 tags and search/filter
-
-Allergies	
-/patient/allergies
-Severity tracker (Low, Moderate, Severe, Anaphylactic)
-
-Medications	
-/patient/medications
-RxNorm inventory of active medications with dosage schedules
-
-Prescriptions	
-/patient/prescriptions
-Ingested prescription archive with OCR transcript inspection
-
-Analysis Hub	
-/patient/analysis
-OCR Upload, Manual RxNorm Search, and Package Scanner
-
-Safety Matrix	
-/patient/analysis/results
-Multi-drug pairwise matrix, contraindications, avoidance suggestions
-
-Dual Reports	
-/patient/reports
-Printable Patient & Doctor report viewer with PDF print integration
-
-History Logs	
-/patient/history
-Historical audit records and re-run comparison
-
-Doctor Workbench	
-/doctor/dashboard
-Clinical triage, total patients, critical alert feed
-
-Patient 360	
-/doctor/patients/[id]
-Complete patient longitudinal record with 1-click clinical review
-
-System Diagnostics	
-/admin/system-health
-Real-time telemetry for database, neural OCR, RxNorm, and AI gateways
