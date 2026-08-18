@@ -33,7 +33,7 @@ export const Navbar: React.FC<{
     }
   }, [pathname]);
 
-  const handleRoleSwitch = (role: 'patient' | 'doctor') => {
+  const handleRoleSwitch = (role: 'patient' | 'doctor' | 'admin') => {
     if (role === 'patient') {
       const pUser = AppStateService.getPatients()[0];
       const newUser: UserType = {
@@ -48,7 +48,7 @@ export const Navbar: React.FC<{
       AppStateService.setCurrentUser(newUser);
       setCurrentUser(newUser);
       router.push('/patient/dashboard');
-    } else {
+    } else if (role === 'doctor') {
       const newUser: UserType = {
         id: 'user-doctor-1',
         email: 'doctor@medsafe.ai',
@@ -61,6 +61,18 @@ export const Navbar: React.FC<{
       AppStateService.setCurrentUser(newUser);
       setCurrentUser(newUser);
       router.push('/doctor/dashboard');
+    } else {
+      const newUser: UserType = {
+        id: 'user-admin-1',
+        email: 'admin@medsafe.ai',
+        password_hash: 'demo123',
+        role: 'admin',
+        name: 'System Administrator',
+        created_at: '2026-01-01'
+      };
+      AppStateService.setCurrentUser(newUser);
+      setCurrentUser(newUser);
+      router.push('/admin/system-health');
     }
     setShowProfileMenu(false);
   };
@@ -143,6 +155,16 @@ export const Navbar: React.FC<{
                 }`}
               >
                 Doctor View
+              </button>
+              <button
+                onClick={() => handleRoleSwitch('admin')}
+                className={`px-2.5 py-1 rounded-md transition-all ${
+                  currentUser.role === 'admin'
+                    ? 'bg-white text-blue-700 font-bold shadow-xs border border-slate-200/80'
+                    : 'text-slate-600 hover:text-slate-900'
+                }`}
+              >
+                Admin View
               </button>
             </div>
           )}

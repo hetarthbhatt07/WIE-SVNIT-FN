@@ -44,7 +44,16 @@ export const Sidebar: React.FC<SidebarProps> = ({ role = 'patient', isOpen = fal
     { label: 'Doctor Settings', href: '/doctor/settings', icon: Settings },
   ];
 
-  const items = role === 'doctor' ? doctorNavItems : patientNavItems;
+  const adminNavItems = [
+    { label: 'System Diagnostics', href: '/admin/system-health', icon: Activity, highlight: true },
+    { label: 'Patient Clinical Registry', href: '/admin/patients', icon: Users },
+    { label: 'Regulatory Audit Logs', href: '/admin/audit-logs', icon: History },
+    { label: 'Clinical Knowledge Base', href: '/admin/clinical-engine', icon: Stethoscope },
+    { label: 'System Reports Archive', href: '/admin/reports', icon: FileCheck },
+    { label: 'System Preferences', href: '/admin/settings', icon: Settings },
+  ];
+
+  const items = role === 'admin' ? adminNavItems : role === 'doctor' ? doctorNavItems : patientNavItems;
 
   return (
     <>
@@ -65,7 +74,7 @@ export const Sidebar: React.FC<SidebarProps> = ({ role = 'patient', isOpen = fal
         {/* Top Section / Action */}
         <div className="p-4 flex flex-col gap-4 overflow-y-auto">
           {/* Quick Action Button */}
-          <Link href={role === 'doctor' ? '/doctor/analysis' : '/patient/analysis'} onClick={onClose}>
+          <Link href={role === 'admin' ? '/admin/system-health' : role === 'doctor' ? '/doctor/analysis' : '/patient/analysis'} onClick={onClose}>
             <TactileButton
               variant="primary"
               size="sm"
@@ -73,14 +82,14 @@ export const Sidebar: React.FC<SidebarProps> = ({ role = 'patient', isOpen = fal
               leftIcon={<ScanLine className="w-4 h-4" />}
               rightIcon={<ChevronRight className="w-3.5 h-3.5 opacity-70" />}
             >
-              {role === 'doctor' ? 'New Clinical Check' : 'Analyze Medicine'}
+              {role === 'admin' ? 'System Telemetry' : role === 'doctor' ? 'New Clinical Check' : 'Analyze Medicine'}
             </TactileButton>
           </Link>
 
           {/* Navigation Links */}
           <nav className="flex flex-col gap-1">
             <span className="text-[11px] font-mono font-semibold text-slate-400 px-3 uppercase tracking-wider mb-1">
-              {role === 'doctor' ? 'Clinical Navigation' : 'Patient Workspace'}
+              {role === 'admin' ? 'Admin Workspace' : role === 'doctor' ? 'Clinical Navigation' : 'Patient Workspace'}
             </span>
 
             {items.map((item) => {

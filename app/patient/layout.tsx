@@ -1,6 +1,7 @@
 'use client';
 
 import React, { useState } from 'react';
+import '@/app/globals.css';
 import { Navbar } from '@/components/navigation/Navbar';
 import { Sidebar } from '@/components/navigation/Sidebar';
 import { CommandPaletteModal } from '@/components/modals/CommandPaletteModal';
