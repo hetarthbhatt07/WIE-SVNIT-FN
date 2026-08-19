@@ -46,7 +46,7 @@ export default function ForgotPasswordPage() {
                 type="email"
                 value={email}
                 onChange={(e) => setEmail(e.target.value)}
-                placeholder="patient@medsafe.ai"
+                placeholder="patient@medsafe.in"
                 leftIcon={<Mail className="w-4 h-4" />}
                 required
                 helperText="We will send a one-time cryptographic reset token."

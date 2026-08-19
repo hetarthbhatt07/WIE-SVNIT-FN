@@ -120,7 +120,7 @@ export const DigiLockerModal: React.FC<{
             </div>
             <h4 className="text-base font-bold text-slate-900">DigiLocker Identity Verified</h4>
             <p className="text-xs text-slate-500 font-mono">
-              ABHA ID linked: <span className="font-bold text-slate-800">eleanor.vance@abdm</span>
+              ABHA ID linked: <span className="font-bold text-slate-800">ananya.sharma@abdm</span>
             </p>
           </div>
         )}

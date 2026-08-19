@@ -730,7 +730,7 @@ export const CLINICAL_DRUG_CLASSES: DrugClass[] = [
 export const INITIAL_DEMO_PATIENTS: Patient[] = [
   {
     patient_id: 101,
-    full_name: "Eleanor Vance",
+    full_name: "Ananya Sharma",
     age: 64,
     gender: "Female",
     date_of_birth: "1962-04-12",
@@ -738,13 +738,13 @@ export const INITIAL_DEMO_PATIENTS: Patient[] = [
     height: 162.0,
     blood_group: "O+",
     created_at: "2026-01-02 10:30:00",
-    email: "patient@medsafe.ai",
-    phone_number: "+1 (555) 234-5678",
-    password_hash: "demo123"
+    email: "patient@medsafe.in",
+    phone_number: "+91 98980 12345",
+    password_hash: "start123"
   },
   {
     patient_id: 102,
-    full_name: "Marcus Holloway",
+    full_name: "Rajesh Kumar",
     age: 48,
     gender: "Male",
     date_of_birth: "1978-09-24",
@@ -752,9 +752,9 @@ export const INITIAL_DEMO_PATIENTS: Patient[] = [
     height: 178.0,
     blood_group: "A+",
     created_at: "2026-01-12 14:15:00",
-    email: "marcus.h@example.com",
-    phone_number: "+1 (555) 876-5432",
-    password_hash: "demo123"
+    email: "rajesh.k@example.in",
+    phone_number: "+91 98251 98765",
+    password_hash: "start123"
   },
   {
     patient_id: 103,
@@ -766,9 +766,9 @@ export const INITIAL_DEMO_PATIENTS: Patient[] = [
     height: 157.0,
     blood_group: "B+",
     created_at: "2026-01-20 09:45:00",
-    email: "priya.sharma@example.com",
-    phone_number: "+1 (555) 432-1098",
-    password_hash: "demo123"
+    email: "priya.sharma@example.in",
+    phone_number: "+91 97123 45678",
+    password_hash: "start123"
   }
 ];
 

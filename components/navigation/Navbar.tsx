@@ -3,8 +3,8 @@
 import React, { useState, useEffect } from 'react';
 import Link from 'next/link';
 import { useRouter, usePathname } from 'next/navigation';
-import { 
-  ShieldCheck, Search, Bell, User, LogOut, Stethoscope, 
+import {
+  ShieldCheck, Search, Bell, User, LogOut, Stethoscope,
   Activity, Check, ExternalLink, Menu, X, ChevronDown, Sparkles
 } from 'lucide-react';
 import { AppStateService } from '@/lib/store/appStore';
@@ -51,10 +51,10 @@ export const Navbar: React.FC<{
     } else if (role === 'doctor') {
       const newUser: UserType = {
         id: 'user-doctor-1',
-        email: 'doctor@medsafe.ai',
-        password_hash: 'demo123',
+        email: 'doctor@medsafe.in',
+        password_hash: 'start123',
         role: 'doctor',
-        name: 'Dr. Sarah Mitchell, MD',
+        name: 'Dr. Sunita Rao, MD',
         doctor_id: 'doc-101',
         created_at: '2026-01-01'
       };
@@ -64,8 +64,8 @@ export const Navbar: React.FC<{
     } else {
       const newUser: UserType = {
         id: 'user-admin-1',
-        email: 'admin@medsafe.ai',
-        password_hash: 'demo123',
+        email: 'admin@medsafe.in',
+        password_hash: 'start123',
         role: 'admin',
         name: 'System Administrator',
         created_at: '2026-01-01'
@@ -90,7 +90,7 @@ export const Navbar: React.FC<{
   return (
     <header className="sticky top-0 z-40 w-full bg-white/95 backdrop-blur-md border-b border-slate-200/90 shadow-[0_1px_3px_0_rgba(0,0,0,0.02)]">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-16 flex items-center justify-between gap-4">
-        
+
         {/* Left Brand Logo & Mobile Toggle */}
         <div className="flex items-center gap-3">
           {onToggleSidebar && !isPublicPage && (
@@ -138,31 +138,28 @@ export const Navbar: React.FC<{
             <div className="hidden sm:flex items-center p-0.5 rounded-lg bg-slate-100 border border-slate-200/80 shadow-[inset_0_1px_2px_0_rgba(0,0,0,0.06)] font-mono text-xs">
               <button
                 onClick={() => handleRoleSwitch('patient')}
-                className={`px-2.5 py-1 rounded-md transition-all ${
-                  currentUser.role === 'patient'
+                className={`px-2.5 py-1 rounded-md transition-all ${currentUser.role === 'patient'
                     ? 'bg-white text-blue-700 font-bold shadow-xs border border-slate-200/80'
                     : 'text-slate-600 hover:text-slate-900'
-                }`}
+                  }`}
               >
                 Patient View
               </button>
               <button
                 onClick={() => handleRoleSwitch('doctor')}
-                className={`px-2.5 py-1 rounded-md transition-all ${
-                  currentUser.role === 'doctor'
+                className={`px-2.5 py-1 rounded-md transition-all ${currentUser.role === 'doctor'
                     ? 'bg-white text-blue-700 font-bold shadow-xs border border-slate-200/80'
                     : 'text-slate-600 hover:text-slate-900'
-                }`}
+                  }`}
               >
                 Doctor View
               </button>
               <button
                 onClick={() => handleRoleSwitch('admin')}
-                className={`px-2.5 py-1 rounded-md transition-all ${
-                  currentUser.role === 'admin'
+                className={`px-2.5 py-1 rounded-md transition-all ${currentUser.role === 'admin'
                     ? 'bg-white text-blue-700 font-bold shadow-xs border border-slate-200/80'
                     : 'text-slate-600 hover:text-slate-900'
-                }`}
+                  }`}
               >
                 Admin View
               </button>
@@ -214,9 +211,8 @@ export const Navbar: React.FC<{
                         notifications.map(n => (
                           <div
                             key={n.id}
-                            className={`p-3.5 hover:bg-slate-50 transition-colors cursor-pointer ${
-                              !n.is_read ? 'bg-blue-50/40' : ''
-                            }`}
+                            className={`p-3.5 hover:bg-slate-50 transition-colors cursor-pointer ${!n.is_read ? 'bg-blue-50/40' : ''
+                              }`}
                             onClick={() => {
                               AppStateService.markNotificationRead(n.id);
                               setShowNotifs(false);

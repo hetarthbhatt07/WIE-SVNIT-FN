@@ -43,7 +43,7 @@ export default function DoctorDashboard() {
               <TactileBadge variant="teal" size="sm">Cardiology / Internal Med</TactileBadge>
             </div>
             <p className="text-xs text-slate-500 font-mono mt-1">
-              Dr. Sarah Mitchell, MD • License: MD-CA-892341 • SVNIT Memorial Healthcare
+              Dr. Sunita Rao, MD • License: GMC-GUJ-892341 • SVNIT Memorial Healthcare
             </p>
           </div>
         </div>
@@ -164,7 +164,7 @@ export default function DoctorDashboard() {
             <div className="flex flex-col gap-3 pt-2 font-mono text-xs">
               <div className="p-3.5 rounded-xl bg-red-50 border border-red-200 text-red-900 flex flex-col gap-1.5">
                 <div className="flex items-center justify-between">
-                  <span className="font-bold text-slate-900 font-sans text-xs">Eleanor Vance (#101)</span>
+                  <span className="font-bold text-slate-900 font-sans text-xs">Ananya Sharma (#101)</span>
                   <TactileBadge variant="red" size="sm">Major DDI</TactileBadge>
                 </div>
                 <p className="text-red-700 text-xs leading-relaxed">
