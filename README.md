@@ -30,6 +30,23 @@
 
 <br/>
 
+---
+
+## 👥 Team VEDIORA
+
+**🏫 Institution:** LDRP Institute of Technology and Research
+
+| # | Name | Role | Email |
+|:--|:-----|:-----|:------|
+| 👑 | **Darji Avani Rajendrabhai** | Team Leader | [darjiavani17@gmail.com](mailto:darjiavani17@gmail.com) |
+| 🥈 | **Darji Janvi Navinbhai** | Co-Leader | [janvidarji0210@gmail.com](mailto:janvidarji0210@gmail.com) |
+| 🧑‍💻 | **Dobariya Bhavarth Jitendra** | Member | [bhavarthdobariya@gmail.com](mailto:bhavarthdobariya@gmail.com) |
+| 🧑‍💻 | **Shaikh Ayanuddin Ayazuddin** | Member | [ayanuddinshaikh153@gmail.com](mailto:ayanuddinshaikh153@gmail.com) |
+| 🧑‍💻 | **Kunj Shaileshbhai Darji** | Member | [darjikunj7007@gmail.com](mailto:darjikunj7007@gmail.com) |
+| 🧑‍💻 | **Hetarth Umang Bhatt** | Member | [hetarthbhattu07@gmail.com](mailto:hetarthbhattu07@gmail.com) |
+
+<br/>
+
 </div>
 
 ---
