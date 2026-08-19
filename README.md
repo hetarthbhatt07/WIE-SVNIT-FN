@@ -36,8 +36,8 @@
 
 **🏫 Institution:** LDRP Institute of Technology and Research
 
-| # | Name | Role | Email |
-|:--|:-----|:-----|:------|
+| # | Name | Role | 
+|:--|:-----|:-----|
 | 👑 | **Darji Avani Rajendrabhai** | Team Leader |
 | 🥈 | **Darji Janvi Navinbhai** | Co-Leader | 
 | 🧑‍💻 | **Dobariya Bhavarth Jitendra** | Member |
