@@ -29,9 +29,9 @@ export default function AnalysisResultsPage() {
       const mockSession: AnalysisSession = {
         id: 'analysis-demo-1',
         patient_id: 101,
-        patient_name: 'Eleanor Vance',
+        patient_name: 'Ananya Sharma',
         created_by_role: 'patient',
-        created_by_name: 'Eleanor Vance',
+        created_by_name: 'Ananya Sharma',
         overall_risk: 'MAJOR / SEVERE',
         risk_score: 92,
         created_at: new Date().toISOString().replace('T', ' ').substring(0, 19),
@@ -90,7 +90,7 @@ export default function AnalysisResultsPage() {
           }
         ],
         patient_report: {
-          title: 'Medication Safety & Guidance Summary for Eleanor Vance',
+          title: 'Medication Safety & Guidance Summary for Ananya Sharma',
           summary_text: 'We analyzed your 3 medications (Warfarin, Ibuprofen, Lisinopril). ⚠️ IMPORTANT: Our safety check identified critical combinations that may increase your risk of bleeding or severe side effects. Please review the alerts below with your doctor.',
           safety_alert_banner: 'CRITICAL CAUTION: Do NOT take Ibuprofen together with Warfarin without speaking directly to your doctor or pharmacist.',
           key_action_steps: [
@@ -106,7 +106,7 @@ export default function AnalysisResultsPage() {
           disclaimer: 'This automated safety report is an AI-assisted decision-support summary and is not a substitute for professional clinical medical advice.'
         },
         doctor_report: {
-          clinical_summary: 'Comprehensive drug safety evaluation completed for patient Eleanor Vance, Age: 64 (Female), Weight: 68.5kg. Regimen includes 3 active compounds. Regimen Risk Tier: MAJOR / SEVERE.',
+          clinical_summary: 'Comprehensive drug safety evaluation completed for patient Ananya Sharma, Age: 64 (Female), Weight: 68.5kg. Regimen includes 3 active compounds. Regimen Risk Tier: MAJOR / SEVERE.',
           pharmacological_mechanism: '[MAJOR] Warfarin ↔ Ibuprofen: Concurrent use dramatically increases gastrointestinal and systemic bleeding risks due to platelet aggregation inhibition combined with anticoagulant effect.',
           risk_level: 'MAJOR / SEVERE',
           icd10_contraindications: ['[K25.9] Peptic Ulcer Disease (Active / History) with Ibuprofen: NSAIDs inhibit gastric protective prostaglandins (PGE2, PGI2), inducing mucosal damage.'],
@@ -124,7 +124,7 @@ export default function AnalysisResultsPage() {
           ]
         },
         ai_reasoning: {
-          intent_analysis: 'Evaluate medication regimen (3 drugs) against patient history for Eleanor Vance (64y/o, Female).',
+          intent_analysis: 'Evaluate medication regimen (3 drugs) against patient history for Ananya Sharma (64y/o, Female).',
           planning_steps: [
             'Step 1: Extracted and normalized 3 drug entities via RxNorm standard.',
             'Step 2: Cross-referenced pairwise interaction rules against FDA/DailyMed database (1 interaction found).',

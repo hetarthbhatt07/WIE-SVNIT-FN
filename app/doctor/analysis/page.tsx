@@ -116,7 +116,7 @@ export default function DoctorAnalysisPage() {
       patient_id: selectedPatient.patient_id,
       patient_name: selectedPatient.full_name,
       created_by_role: 'doctor',
-      created_by_name: 'Dr. Sarah Mitchell, MD',
+      created_by_name: 'Dr. Sunita Rao, MD',
       overall_risk: engineResult.overallRisk,
       risk_score: engineResult.riskScore,
       created_at: new Date().toISOString().replace('T', ' ').substring(0, 19),

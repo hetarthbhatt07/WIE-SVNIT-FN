@@ -1,12 +1,12 @@
 // lib/store/appStore.ts - Central Reactive Application State & Persistence
 
-import { 
-  User, Patient, DoctorProfile, PatientCondition, PatientAllergy, 
+import {
+  User, Patient, DoctorProfile, PatientCondition, PatientAllergy,
   Prescription, PrescriptionDrug, AnalysisSession, AuditLog, NotificationItem, Drug
 } from '@/types/database';
-import { 
-  CLINICAL_DRUGS, CLINICAL_MEDICAL_CONDITIONS, 
-  INITIAL_DEMO_PATIENTS, INITIAL_PATIENT_CONDITIONS 
+import {
+  CLINICAL_DRUGS, CLINICAL_MEDICAL_CONDITIONS,
+  INITIAL_DEMO_PATIENTS, INITIAL_PATIENT_CONDITIONS
 } from '@/lib/data/clinicalKnowledge';
 
 const STORAGE_KEYS = {
@@ -26,19 +26,19 @@ const STORAGE_KEYS = {
 const INITIAL_USERS: User[] = [
   {
     id: 'user-patient-1',
-    email: 'patient@medsafe.ai',
-    password_hash: 'demo123',
+    email: 'patient@medsafe.in',
+    password_hash: 'start123',
     role: 'patient',
-    name: 'Eleanor Vance',
+    name: 'Ananya Sharma',
     patient_id: 101,
     created_at: '2026-01-02 10:30:00'
   },
   {
     id: 'user-doctor-1',
-    email: 'doctor@medsafe.ai',
-    password_hash: 'demo123',
+    email: 'doctor@medsafe.in',
+    password_hash: 'start123',
     role: 'doctor',
-    name: 'Dr. Sarah Mitchell, MD',
+    name: 'Dr. Sunita Rao, MD',
     doctor_id: 'doc-101',
     created_at: '2026-01-01 08:00:00'
   }
@@ -48,11 +48,11 @@ const INITIAL_DOCTORS: DoctorProfile[] = [
   {
     id: 'doc-101',
     user_id: 'user-doctor-1',
-    full_name: 'Dr. Sarah Mitchell, MD',
-    email: 'doctor@medsafe.ai',
-    phone: '+1 (555) 345-6789',
+    full_name: 'Dr. Sunita Rao, MD',
+    email: 'doctor@medsafe.in',
+    phone: '+91 98250 34567',
     specialization: 'Cardiology & Internal Medicine',
-    license_number: 'MD-CA-892341',
+    license_number: 'GMC-GUJ-892341',
     hospital_name: 'SVNIT Memorial Healthcare & Research Institute',
     verification_status: 'Verified',
     created_at: '2026-01-01 08:00:00'
@@ -84,8 +84,8 @@ const INITIAL_PRESCRIPTIONS: Prescription[] = [
   {
     prescription_id: 501,
     patient_id: 101,
-    doctor_name: 'Dr. Robert Jenkins, FACC',
-    hospital_name: 'St. Jude Heart & Vascular Center',
+    doctor_name: 'Dr. Vikramaditya Joshi, FACC',
+    hospital_name: 'Apollo Heart & Vascular Institute, Surat',
     uploaded_file: '/samples/prescription_sample_1.png',
     prescription_date: '2026-01-14',
     ocr_text: 'Rx: Warfarin 5mg daily. Ibuprofen 400mg PO PRN for joint pain. Lisinopril 10mg morning.',
@@ -94,7 +94,7 @@ const INITIAL_PRESCRIPTIONS: Prescription[] = [
   {
     prescription_id: 502,
     patient_id: 101,
-    doctor_name: 'Dr. Sarah Mitchell, MD',
+    doctor_name: 'Dr. Sunita Rao, MD',
     hospital_name: 'SVNIT Memorial Healthcare',
     uploaded_file: '/samples/prescription_sample_2.pdf',
     prescription_date: '2026-01-28',
@@ -128,7 +128,7 @@ const INITIAL_NOTIFICATIONS: NotificationItem[] = [
     id: 'notif-3',
     user_id: 'user-doctor-1',
     title: 'Critical Patient Interaction Flag',
-    message: 'Patient Eleanor Vance submitted prescription with contraindicated NSAID (Peptic Ulcer + Warfarin).',
+    message: 'Patient Ananya Sharma submitted prescription with contraindicated NSAID (Peptic Ulcer + Warfarin).',
     severity: 'critical',
     is_read: false,
     link_url: '/doctor/patients/101',
@@ -139,9 +139,9 @@ const INITIAL_NOTIFICATIONS: NotificationItem[] = [
 export const INITIAL_DEFAULT_ANALYSIS_SESSION: AnalysisSession = {
   id: 'analysis-seed-501',
   patient_id: 101,
-  patient_name: 'Eleanor Vance',
+  patient_name: 'Ananya Sharma',
   created_by_role: 'patient',
-  created_by_name: 'Eleanor Vance',
+  created_by_name: 'Ananya Sharma',
   overall_risk: 'MAJOR / SEVERE',
   risk_score: 92,
   created_at: '2026-02-01 10:15:00',
@@ -200,7 +200,7 @@ export const INITIAL_DEFAULT_ANALYSIS_SESSION: AnalysisSession = {
     }
   ],
   patient_report: {
-    title: 'Medication Safety & Guidance Summary for Eleanor Vance',
+    title: 'Medication Safety & Guidance Summary for Ananya Sharma',
     summary_text: 'We analyzed your 3 medications (Warfarin, Ibuprofen, Lisinopril). ⚠️ IMPORTANT: Our safety check identified critical combinations that may increase your risk of bleeding or severe side effects. Please review the alerts below with your doctor.',
     safety_alert_banner: 'CRITICAL CAUTION: Do NOT take Ibuprofen together with Warfarin without speaking directly to your doctor or pharmacist.',
     key_action_steps: [
@@ -216,7 +216,7 @@ export const INITIAL_DEFAULT_ANALYSIS_SESSION: AnalysisSession = {
     disclaimer: 'This automated safety report is an AI-assisted decision-support summary and is not a substitute for professional clinical medical advice, diagnosis, or treatment. Never stop or modify prescription doses without consulting your doctor or pharmacist.'
   },
   doctor_report: {
-    clinical_summary: 'Comprehensive drug safety evaluation completed for patient Eleanor Vance, Age: 64 (Female), Weight: 68.5kg. Regimen includes 3 active compounds. Regimen Risk Tier: MAJOR / SEVERE. Identified 1 significant drug-drug interaction. Identified 1 disease-specific contraindication against documented medical history (Essential Hypertension, Peptic Ulcer Disease, Atrial Fibrillation).',
+    clinical_summary: 'Comprehensive drug safety evaluation completed for patient Ananya Sharma, Age: 64 (Female), Weight: 68.5kg. Regimen includes 3 active compounds. Regimen Risk Tier: MAJOR / SEVERE. Identified 1 significant drug-drug interaction. Identified 1 disease-specific contraindication against documented medical history (Essential Hypertension, Peptic Ulcer Disease, Atrial Fibrillation).',
     pharmacological_mechanism: '[MAJOR] Warfarin ↔ Ibuprofen: Concurrent use of Warfarin and Ibuprofen dramatically increases gastrointestinal and systemic bleeding risks due to platelet aggregation inhibition combined with anticoagulant effect. | Clinical Effect: Substantial elevation of INR and severe gastrointestinal hemorrhage risk.',
     risk_level: 'MAJOR / SEVERE',
     icd10_contraindications: ['[K25.9] Peptic Ulcer Disease (Active / History) with Ibuprofen: NSAIDs inhibit gastric protective prostaglandins (PGE2, PGI2), inducing mucosal damage, recurrent ulceration, perforation, and massive GI hemorrhage.'],
@@ -236,7 +236,7 @@ export const INITIAL_DEFAULT_ANALYSIS_SESSION: AnalysisSession = {
     ]
   },
   ai_reasoning: {
-    intent_analysis: 'Evaluate medication regimen (3 drugs) against patient history for Eleanor Vance (64y/o, Female).',
+    intent_analysis: 'Evaluate medication regimen (3 drugs) against patient history for Ananya Sharma (64y/o, Female).',
     planning_steps: [
       'Step 1: Extracted and normalized 3 drug entities via RxNorm standard.',
       'Step 2: Cross-referenced pairwise interaction rules against FDA/DailyMed database (1 interaction found).',
@@ -336,7 +336,7 @@ export class AppStateService {
     if (!found) {
       return { success: false, error: 'No account found with this email address.' };
     }
-    if (found.password_hash !== pass && pass !== 'demo123') {
+    if (found.password_hash !== pass && pass !== 'start123') {
       return { success: false, error: 'Incorrect password.' };
     }
     this.setCurrentUser(found);
@@ -510,12 +510,12 @@ export class AppStateService {
   }
 
   public static logAudit(
-    userId: string, 
-    role: string, 
-    action: string, 
-    entityType: string, 
-    entityId: string, 
-    decisionSummary: string, 
+    userId: string,
+    role: string,
+    action: string,
+    entityType: string,
+    entityId: string,
+    decisionSummary: string,
     evidenceRef: string
   ): void {
     const logs = this.getItem<AuditLog[]>(STORAGE_KEYS.AUDIT_LOGS, []);

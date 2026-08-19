@@ -10,9 +10,9 @@ import { useToast } from '@/components/ui/ToastProvider';
 
 export default function DoctorSettingsPage() {
   const { success } = useToast();
-  const [docName, setDocName] = useState('Dr. Sarah Mitchell, MD');
-  const [email, setEmail] = useState('doctor@medsafe.ai');
-  const [license, setLicense] = useState('MD-CA-892341');
+  const [docName, setDocName] = useState('Dr. Sunita Rao, MD');
+  const [email, setEmail] = useState('doctor@medsafe.in');
+  const [license, setLicense] = useState('GMC-GUJ-892341');
   const [specialty, setSpecialty] = useState('Cardiology & Pharmacotherapy');
   const [hospital, setHospital] = useState('SVNIT Memorial Healthcare');
   const [isSaving, setIsSaving] = useState(false);

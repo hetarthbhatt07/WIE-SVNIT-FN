@@ -194,7 +194,7 @@ export default function SignupPage() {
                   label="Full Name"
                   value={fullName}
                   onChange={(e) => setFullName(e.target.value)}
-                  placeholder={role === 'doctor' ? 'Dr. John Doe, MD' : 'Eleanor Vance'}
+                  placeholder={role === 'doctor' ? 'Dr. Rajesh Sharma, MD' : 'Ananya Sharma'}
                   leftIcon={<User className="w-4 h-4" />}
                   required
                 />
@@ -203,7 +203,7 @@ export default function SignupPage() {
                   type="email"
                   value={email}
                   onChange={(e) => setEmail(e.target.value)}
-                  placeholder="name@example.com"
+                  placeholder="name@example.in"
                   leftIcon={<Mail className="w-4 h-4" />}
                   required
                 />
@@ -215,7 +215,7 @@ export default function SignupPage() {
                   type="tel"
                   value={phone}
                   onChange={(e) => setPhone(e.target.value)}
-                  placeholder="+1 (555) 000-0000"
+                  placeholder="+91 98765 43210"
                   leftIcon={<Phone className="w-4 h-4" />}
                   required
                 />

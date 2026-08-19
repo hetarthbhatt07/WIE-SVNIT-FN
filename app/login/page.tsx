@@ -3,9 +3,9 @@
 import React, { useState } from 'react';
 import Link from 'next/link';
 import { useRouter } from 'next/navigation';
-import { 
-  ShieldCheck, Lock, Mail, Eye, EyeOff, ArrowRight, 
-  Smartphone, UserCheck, Stethoscope, Sparkles 
+import {
+  ShieldCheck, Lock, Mail, Eye, EyeOff, ArrowRight,
+  Smartphone, UserCheck, Stethoscope, Sparkles
 } from 'lucide-react';
 import { AppStateService } from '@/lib/store/appStore';
 import { TactileButton } from '@/components/ui/TactileButton';
@@ -20,8 +20,8 @@ export default function LoginPage() {
   const router = useRouter();
   const { success, error } = useToast();
   const [role, setRole] = useState<'patient' | 'doctor'>('patient');
-  const [email, setEmail] = useState('patient@medsafe.ai');
-  const [password, setPassword] = useState('demo123');
+  const [email, setEmail] = useState('patient@medsafe.in');
+  const [password, setPassword] = useState('start123');
   const [showPassword, setShowPassword] = useState(false);
   const [rememberMe, setRememberMe] = useState(true);
   const [isLoading, setIsLoading] = useState(false);
@@ -30,11 +30,11 @@ export default function LoginPage() {
   const handleQuickFill = (targetRole: 'patient' | 'doctor') => {
     setRole(targetRole);
     if (targetRole === 'patient') {
-      setEmail('patient@medsafe.ai');
-      setPassword('demo123');
+      setEmail('patient@medsafe.in');
+      setPassword('start123');
     } else {
-      setEmail('doctor@medsafe.ai');
-      setPassword('demo123');
+      setEmail('doctor@medsafe.in');
+      setPassword('start123');
     }
   };
 
@@ -61,7 +61,7 @@ export default function LoginPage() {
   const handleDigiLockerSuccess = (dlId: string) => {
     success('DigiLocker Linked', `Verified National Health ID: ${dlId}`);
     handleQuickFill('patient');
-    AppStateService.authenticateUser('patient@medsafe.ai', 'demo123');
+    AppStateService.authenticateUser('patient@medsafe.in', 'start123');
     router.push('/patient/dashboard');
   };
 
@@ -85,17 +85,16 @@ export default function LoginPage() {
 
       <div className="mt-8 sm:mx-auto sm:w-full sm:max-w-md px-4 sm:px-0">
         <div className="bg-white py-8 px-6 sm:px-8 rounded-2xl border border-slate-200/90 shadow-xl flex flex-col gap-6">
-          
+
           {/* Role Selector Tabs */}
           <div className="p-1 rounded-xl bg-slate-100 border border-slate-200/80 shadow-[inset_0_1px_2px_0_rgba(0,0,0,0.06)] grid grid-cols-2 gap-1 font-mono text-xs">
             <button
               type="button"
               onClick={() => handleQuickFill('patient')}
-              className={`py-2 rounded-lg font-bold transition-all flex items-center justify-center gap-2 ${
-                role === 'patient'
+              className={`py-2 rounded-lg font-bold transition-all flex items-center justify-center gap-2 ${role === 'patient'
                   ? 'bg-white text-[#2563EB] shadow-sm border border-slate-200/80'
                   : 'text-slate-600 hover:text-slate-900'
-              }`}
+                }`}
             >
               <UserCheck className="w-4 h-4" />
               Patient Login
@@ -103,11 +102,10 @@ export default function LoginPage() {
             <button
               type="button"
               onClick={() => handleQuickFill('doctor')}
-              className={`py-2 rounded-lg font-bold transition-all flex items-center justify-center gap-2 ${
-                role === 'doctor'
+              className={`py-2 rounded-lg font-bold transition-all flex items-center justify-center gap-2 ${role === 'doctor'
                   ? 'bg-white text-[#2563EB] shadow-sm border border-slate-200/80'
                   : 'text-slate-600 hover:text-slate-900'
-              }`}
+                }`}
             >
               <Stethoscope className="w-4 h-4" />
               Doctor Portal
@@ -128,7 +126,7 @@ export default function LoginPage() {
               type="email"
               value={email}
               onChange={(e) => setEmail(e.target.value)}
-              placeholder="name@example.com"
+              placeholder="name@example.in"
               leftIcon={<Mail className="w-4 h-4" />}
               required
             />

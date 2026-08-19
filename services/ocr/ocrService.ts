@@ -59,8 +59,8 @@ export class OCRService {
     }
 
     // Determine sample content or extract from filename
-    let rawText = `Dr. Robert Jenkins, MD - Cardiology
-Patient: Eleanor Vance | Date: 2026-01-14
+    let rawText = `Dr. Vikramaditya Joshi, MD - Cardiology
+Patient: Ananya Sharma | Date: 2026-01-14
 
 Rx:
 1. Tab Warfarin 5mg - 1 tablet orally once daily at 6 PM.
@@ -68,11 +68,11 @@ Rx:
 3. Tab Lisinopril 10mg - 1 tablet PO every morning for BP.
 4. Tab Omeprazole 20mg - 1 capsule PO 30 mins before breakfast.
 
-Refills: 2 | Signature: Dr. R. Jenkins`;
+Refills: 2 | Signature: Dr. V. Joshi`;
 
     if (file.name.toLowerCase().includes('sample_2') || file.name.toLowerCase().includes('paracetamol')) {
-      rawText = `Dr. Sarah Mitchell, MD - SVNIT Health
-Patient: Eleanor Vance | Date: 2026-01-28
+      rawText = `Dr. Sunita Rao, MD - SVNIT Health
+Patient: Ananya Sharma | Date: 2026-01-28
 
 Prescription:
 - Coumadin (Warfarin) 5mg PO OD
@@ -81,7 +81,7 @@ Prescription:
 Note: Patient has history of peptic ulcer. Avoid NSAIDs.`;
     } else if (file.name.toLowerCase().includes('diabetes') || file.name.toLowerCase().includes('metformin')) {
       rawText = `SVNIT Endocrine Clinic
-Patient: Marcus Holloway | Date: 2026-01-12
+Patient: Rajesh Kumar | Date: 2026-01-12
 
 Rx:
 1. Glucophage (Metformin) 500mg - 1 tablet BD with meals
