@@ -219,9 +219,9 @@ open http://localhost:3000
 
 | Role | Email | Password | Workspace |
 |:-----|:------|:---------|:----------|
-| 🟦 **Patient** | `patient@medsafe.ai` | `demo123` | `/patient/dashboard` |
-| 🟩 **Doctor** | `doctor@medsafe.ai` | `demo123` | `/doctor/dashboard` |
-| 🟥 **Admin** | `admin@medsafe.ai` | `demo123` | `/admin/system-health` |
+| 🟦 **Patient** | `patient@medsafe.in` | `start123` | `/patient/dashboard` |
+| 🟩 **Doctor** | `doctor@medsafe.in` | `start123` | `/doctor/dashboard` |
+| 🟥 **Admin** | `admin@medsafe.in` | `start123` | `/admin/system-health` |
 
 > **Demo patient is pre-loaded with:** Warfarin + Ibuprofen (Major DDI), Peptic Ulcer Disease (ICD-10: K27), and 2 ingested OCR prescriptions — so every feature is immediately demonstrable.
 
