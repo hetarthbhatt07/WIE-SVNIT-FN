@@ -92,8 +92,8 @@ export default function LoginPage() {
               type="button"
               onClick={() => handleQuickFill('patient')}
               className={`py-2 rounded-lg font-bold transition-all flex items-center justify-center gap-2 ${role === 'patient'
-                  ? 'bg-white text-[#2563EB] shadow-sm border border-slate-200/80'
-                  : 'text-slate-600 hover:text-slate-900'
+                ? 'bg-white text-[#2563EB] shadow-sm border border-slate-200/80'
+                : 'text-slate-600 hover:text-slate-900'
                 }`}
             >
               <UserCheck className="w-4 h-4" />
@@ -103,8 +103,8 @@ export default function LoginPage() {
               type="button"
               onClick={() => handleQuickFill('doctor')}
               className={`py-2 rounded-lg font-bold transition-all flex items-center justify-center gap-2 ${role === 'doctor'
-                  ? 'bg-white text-[#2563EB] shadow-sm border border-slate-200/80'
-                  : 'text-slate-600 hover:text-slate-900'
+                ? 'bg-white text-[#2563EB] shadow-sm border border-slate-200/80'
+                : 'text-slate-600 hover:text-slate-900'
                 }`}
             >
               <Stethoscope className="w-4 h-4" />

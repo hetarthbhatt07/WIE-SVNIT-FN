@@ -39,7 +39,7 @@ export const Navbar: React.FC<{
       const newUser: UserType = {
         id: 'user-patient-1',
         email: pUser.email,
-        password_hash: 'demo123',
+        password_hash: 'start123',
         role: 'patient',
         name: pUser.full_name,
         patient_id: pUser.patient_id,
