@@ -51,21 +51,6 @@
 
 ---
 
-## 👥 Team VEDIORA
-
-**🏫 Institution:** LDRP Institute of Technology and Research &nbsp;|&nbsp; **🏆 Event:** IEEE WIE ILS 2026
-
-| # | Name | Role |
-|:--|:-----|:-----|
-| 👑 | **Avani Rajendrabhai Darji** | Team Leader |
-| 🥈 | **Janvi Navinbhai Darji** | Co-Leader |
-| 🧑‍💻 | **Bhavarth Jitendra Dobariya** | Member |
-| 🧑‍💻 | **Ayanuddin Ayazuddin Shaikh** | Member |
-| 🧑‍💻 | **Kunj Shaileshbhai Darji** | Member |
-| 🧑‍💻 | **Hetarth Umang Bhatt** | Member |
-
----
-
 ## 📋 Table of Contents
 
 | # | Section |
